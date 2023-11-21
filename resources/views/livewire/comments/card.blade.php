@@ -37,7 +37,6 @@ new class extends Component {
     {
         $this->comment->update($this->validate());
         $this->post->touch('updated_at');
-
         $this->editing = false;
     }
 }; ?>
@@ -52,8 +51,8 @@ new class extends Component {
     >
         {{--  TITLE --}}
         <x-slot:title class="!text-sm flex gap-2 items-center">
-            <x-avatar :image="$comment->author->avatar" :title="$comment->author->username" />
-            <livewire:timestamp :dateTime="$comment->created_at" />
+            <x-avatar :image="$comment->author->avatar" :title="$comment->author->username"/>
+            <livewire:timestamp :dateTime="$comment->created_at"/>
         </x-slot:title>
 
         {{-- MENU --}}
@@ -61,10 +60,11 @@ new class extends Component {
             @if(! $post->archived_at && $comment->author->isMyself())
                 <x-dropdown right>
                     <x-slot:trigger>
-                        <x-button icon="o-ellipsis-vertical" class="btn-sm btn-ghost btn-circle" />
+                        <x-button icon="o-ellipsis-vertical" class="btn-sm btn-ghost btn-circle"/>
                     </x-slot:trigger>
-                    <x-menu-item title="Edit" icon="o-pencil" @click="$wire.editing = true" />
-                    <x-menu-item title="Remove" icon="o-trash" wire:click="delete({{ $comment->id  }})" class="text-error" />
+                    <x-menu-item title="Edit" icon="o-pencil" @click="$wire.editing = true"/>
+                    <x-menu-item title="Remove" icon="o-trash" wire:click="delete({{ $comment->id  }})"
+                                 class="text-error"/>
                 </x-dropdown>
             @endif
         </x-slot:menu>
@@ -78,11 +78,11 @@ new class extends Component {
 
             {{-- EDIT FORM --}}
             <x-form x-show="$wire.editing" wire:submit="save" class="flex-1" @keydown.meta.enter="$wire.save()">
-                <x-textarea placeholder="Reply..." wire:model="body" />
+                <x-textarea placeholder="Reply..." wire:model="body"/>
 
                 <x-slot:actions>
-                    <x-button label="Cancel" @click="$wire.editing = false" />
-                    <x-button label="Save" type="submit" icon="o-paper-airplane" class="btn-primary" spinner="save" />
+                    <x-button label="Cancel" @click="$wire.editing = false"/>
+                    <x-button label="Save" type="submit" icon="o-paper-airplane" class="btn-primary" spinner="save"/>
                 </x-slot:actions>
             </x-form>
         </div>

@@ -28,13 +28,13 @@ new class extends Component {
 
 <div class="lg:flex gap-5 mt-10">
     <div class="hidden lg:block">
-        <x-avatar image="{{ auth()->user()?->avatar }}" class="!w-8 lg:!w-16" />
+        <x-avatar image="{{ auth()->user()?->avatar }}" class="!w-8 lg:!w-16"/>
     </div>
     <x-form wire:submit="save" class="flex-1" @keydown.meta.enter="$wire.save()">
-        <x-textarea placeholder="Reply..." wire:model="body" />
+        <x-textarea placeholder="Reply..." wire:model="body"/>
 
         <x-slot:actions>
-            <x-button label="Reply" type="submit" icon="o-paper-airplane" class="btn-primary" spinner="save" />
+            <x-button label="Reply" type="submit" icon="o-paper-airplane" class="btn-primary" spinner="save"/>
         </x-slot:actions>
     </x-form>
 </div>
